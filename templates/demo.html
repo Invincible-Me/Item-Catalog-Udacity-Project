@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+{% for movie in movies %}
+
+    <div>
+
+        <div title="{{movie.movieName}}" style="background: url('{{ movie.posterUrl }}') center / cover;">
+            <a href="{{url_for('movieDetail',genre = movie.genre, movieId = movie.id)}}"></a>
+        </div>
+
+        <div class="">
+
+            <a href="{{url_for('movieDetail',genre = movie.genre, movieId = movie.id)}}" title="{{ movie.movieName }}" tabindex="-1" class="link-fade"> <span>{{ movie.movieName }}</span></a>
+
+        </div>
+    </div>
+    {% else %}
+    <span align="center">{{error}}</span>
+{% endfor %}
+</div>
+{% endblock %}

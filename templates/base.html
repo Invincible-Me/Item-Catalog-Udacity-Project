@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="989762915416-k2pjtoujc6rraf9iuoe89o5hgoqkorbo.apps.googleusercontent.com">
+    <title>Item Catalog</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+</head>
+<div>
+    <header>
+        <div>
+
+          
+            {% if currentPage == 'main' or currentPage == 'detail' %}
+            <a href="{{url_for('showMovies')}}" ><span class="mdl-layout-title">Movie-Counter</span></a>
+            {% else %}
+            <span>{{title}}</span>
+            {% endif %}
+           
+            <div></div>
+            
+        </div>
+    </header>
+    <div>
+      <span>Account</span>
+      <navid="user_info">
+        <div>
+          <a>
+            <img id="userImg"  width="50" height="50" src="{{ login_session['img'] }}">
+            <span id="userName" >{{ login_session['name'] }}</span>
+            <p id="userEmail" >{{ login_session['email'] }}</p>
+          </a>
+          <a>Logout</a>
+        </div>
+      </nav>
+        <span>Genres</span>
+        <span>Account</span>
+          <div id="googleSignIn">Login</div>
+        </nav>
+    </div>
+    <main>
+        <div class="page-content">
+          {% block content %}
+          {% endblock %}
+          {% if currentPage=='main' or currentPage=='detail' %}
+          
+            <button id="add-button" onclick="location.href='{{url_for('newMovie')}}'">
+              <i>add</i>
+            </button>
+            <div><strong>Add Item</strong></div>
+          {% endif %}
+
+        </div>
+    </main>
+</div>
+
+  <div>
+    <button type="button"></button>
+  </div>
+
+{% endif %}
+</body>
+</html>

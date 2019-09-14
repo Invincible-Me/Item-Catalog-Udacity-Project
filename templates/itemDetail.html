@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block content %}
+{% if movie %}
+<div>
+    <div>
+        <div>
+            <img src="{{movie.coverUrl}}" alt="" />
+        </div>
+        <div>
+            <h1>{{movie.movieName}}</h1>
+
+            <div>
+                <button onclick="location.href='{{url_for('editMovieDetails', genre = movie.genre, movieId = movie.id)}}'">Edit Movie Details</button>
+                <button onclick="location.href='{{url_for('deleteMovie', genre = movie.genre, movieId = movie.id)}}'">Delete movie</button>
+            </div>
+        </div>
+
+    </div>
+    <hr/>
+
+    <div class="movie-description">
+        <div>
+            {{movie.description|safe}}
+        </div>
+
+    </div>
+
+</div>
+{% else %}
+  <span align="center" >Nothing Here !!</span>
+{% endif %}
+
+{% endblock %}
